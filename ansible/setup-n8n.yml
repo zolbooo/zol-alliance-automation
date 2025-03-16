@@ -11,3 +11,25 @@
       include_role:
         name: ubuntu-install-docker
       when: docker_compose_check.rc != 0
+    - name: Create n8n workspace
+      file:
+        path: "{{ ansible_user_dir }}/n8n"
+        state: directory
+    - name: Copy n8n docker-compose.yml
+      copy:
+        src: "{{ playbook_dir }}/files/n8n-docker-compose.yml"
+        dest: "{{ ansible_user_dir }}/n8n/docker-compose.yml"
+    - name: Copy Traefik htpasswd
+      copy:
+        src: "{{ playbook_dir }}/files/traefik.htpasswd"
+        dest: "{{ ansible_user_dir }}/n8n/traefik.htpasswd"
+    - name: Create LE storage
+      file:
+        path: "{{ ansible_user_dir }}/n8n/.traefik.acme.json"
+        mode: '600'
+        state: touch
+    - name: Start n8n
+      become: true
+      command: docker compose up -d
+      args:
+        chdir: "{{ ansible_user_dir }}/n8n"
