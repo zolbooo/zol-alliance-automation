@@ -7,7 +7,7 @@ services:
       - n8n_data:/home/node/.n8n
     labels:
       - traefik.enable=true
-      - traefik.http.routers.n8n.rule=Host(`za.zolbooo.xyz`)
+      - traefik.http.routers.n8n.rule=Host(`n8n.za.zolbooo.xyz`)
   traefik:
     image: traefik:v3.3
     restart: always
