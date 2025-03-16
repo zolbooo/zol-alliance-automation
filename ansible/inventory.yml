@@ -1,0 +1,4 @@
+all:
+  hosts:
+    za.zolbooo.xyz:
+      ansible_user: zolboobayar
