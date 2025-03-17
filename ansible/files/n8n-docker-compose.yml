@@ -5,6 +5,8 @@ services:
     restart: always
     volumes:
       - n8n_data:/home/node/.n8n
+    environment:
+      WEBHOOK_URL: https://n8n.za.zolbooo.xyz/
     labels:
       - traefik.enable=true
       - traefik.http.routers.n8n.rule=Host(`n8n.za.zolbooo.xyz`)
