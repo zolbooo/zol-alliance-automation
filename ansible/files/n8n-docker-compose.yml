@@ -6,7 +6,8 @@ services:
     volumes:
       - n8n_data:/home/node/.n8n
     environment:
-      WEBHOOK_URL: https://n8n.za.zolbooo.xyz/
+      WEBHOOK_URL: http://n8n:5678/
+      N8N_RUNNERS_ENABLED: "true"
     labels:
       - traefik.enable=true
       - traefik.http.routers.n8n.rule=Host(`n8n.za.zolbooo.xyz`)
@@ -14,6 +15,9 @@ services:
     image: carbone/carbone-ee
     container_name: carbone
     restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.n8n.rule=Host(`carbone.za.zolbooo.xyz`)
   traefik:
     image: traefik:v3.3
     restart: always
