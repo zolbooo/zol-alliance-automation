@@ -10,6 +10,10 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.n8n.rule=Host(`n8n.za.zolbooo.xyz`)
+  carbone:
+    image: carbone/carbone-ee
+    container_name: carbone
+    restart: always
   traefik:
     image: traefik:v3.3
     restart: always
