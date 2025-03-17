@@ -17,7 +17,7 @@ services:
     restart: always
     labels:
       - traefik.enable=true
-      - traefik.http.routers.n8n.rule=Host(`carbone.za.zolbooo.xyz`)
+      - traefik.http.routers.carbone.rule=Host(`carbone.za.zolbooo.xyz`)
   traefik:
     image: traefik:v3.3
     restart: always
