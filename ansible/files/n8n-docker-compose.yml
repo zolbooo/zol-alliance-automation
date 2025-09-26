@@ -1,6 +1,6 @@
 services:
   n8n:
-    image: n8nio/n8n
+    image: ghcr.io/n8n-io/n8n
     container_name: n8n
     restart: always
     volumes:
@@ -8,6 +8,9 @@ services:
     environment:
       WEBHOOK_URL: https://n8n.za.zolbooo.xyz/
       N8N_RUNNERS_ENABLED: "true"
+      N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: "true"
+      N8N_PROXY_HOPS: "1"
+      DB_SQLITE_VACUUM_ON_STARTUP: "true"
     labels:
       - traefik.enable=true
       - traefik.http.routers.n8n.rule=Host(`n8n.za.zolbooo.xyz`)
